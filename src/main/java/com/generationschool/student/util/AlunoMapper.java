@@ -17,8 +17,6 @@ public class AlunoMapper {
                 .idade(alunoDTO.getIdade())
                 .notaPrimeiroSemestre(alunoDTO.getNotaPrimeiroSemestre())
                 .notaSegundoSemestre(alunoDTO.getNotaSegundoSemestre())
-                .nomeProfessor(alunoDTO.getNomeProfessor())
-                .numeroSala(alunoDTO.getNumeroSala())
                 .build();
 
     }
@@ -37,8 +35,7 @@ public class AlunoMapper {
         aluno.setIdade(alunoDTO.getIdade());
         aluno.setNotaPrimeiroSemestre(alunoDTO.getNotaSegundoSemestre());
         aluno.setNotaSegundoSemestre(alunoDTO.getNotaSegundoSemestre());
-        aluno.setNomeProfessor(alunoDTO.getNomeProfessor());
-        aluno.setNumeroSala(alunoDTO.getNumeroSala());
+      
 
     }
 
