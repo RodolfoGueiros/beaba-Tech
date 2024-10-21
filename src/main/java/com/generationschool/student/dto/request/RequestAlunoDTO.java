@@ -13,8 +13,4 @@ public class RequestAlunoDTO {
 
     private Double notaSegundoSemestre;
 
-    private String nomeProfessor;
-
-    private Integer numeroSala;
-
 }

@@ -16,7 +16,7 @@ public class ResponseAlunoDTO {
 
     private Double notaSegundoSemestre;
 
-    public ResponseAlunoDTO(Long id, String name, Integer idade, Double notaPrimeiroSemestre, Double notaSegundoSemestre, String nomeProfessor, Integer numeroSala) {
+    public ResponseAlunoDTO(Long id, String name, Integer idade, Double notaPrimeiroSemestre, Double notaSegundoSemestre) {
         this.id = id;
         this.name = name;
         this.idade = idade;

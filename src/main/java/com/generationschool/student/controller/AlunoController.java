@@ -1,6 +1,6 @@
 package com.generationschool.student.controller;
 
-
+import jakarta.validation.Valid;
 import com.generationschool.student.dto.request.RequestAlunoDTO;
 import com.generationschool.student.dto.response.ResponseAlunoDTO;
 import com.generationschool.student.service.AlunoService;
@@ -30,7 +30,7 @@ public class AlunoController {
     }
 
     @PostMapping
-    public ResponseEntity<ResponseAlunoDTO> register(@RequestBody RequestAlunoDTO requestAlunoDTO, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<ResponseAlunoDTO> register(@Valid @RequestBody RequestAlunoDTO requestAlunoDTO, UriComponentsBuilder uriBuilder) {
 
         ResponseAlunoDTO responseAlunoDTO = alunoService.register(requestAlunoDTO);
 
