@@ -3,13 +3,13 @@ package com.generationschool.student.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.*;
-
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "tb_aluno")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Aluno {
@@ -20,7 +20,7 @@ public class Aluno {
     @Setter(AccessLevel.NONE)
     private Long id;
 
-    @Column(name = "name", nullable = false, unique = false)
+    @Column(name = "name", nullable = true, unique = false)
     @NotBlank(message = "O nome é obrigatório!")
     @Size(min = 3, message = "O nome deve ter pelos menos 3 caracteres.")
     private String name;
@@ -39,7 +39,7 @@ public class Aluno {
   
     @Builder
     public Aluno(String name, Integer idade, Double notaPrimeiroSemestre, Double notaSegundoSemestre) {
-        this.name = name;
+       this.name = name;
         this.idade = idade;
         this.notaPrimeiroSemestre = notaPrimeiroSemestre;
         this.notaSegundoSemestre = notaSegundoSemestre;

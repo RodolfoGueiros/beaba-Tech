@@ -1,10 +1,16 @@
 package com.generationschool.student.controller;
 
-import jakarta.validation.Valid;
 import com.generationschool.student.dto.request.RequestAlunoDTO;
 import com.generationschool.student.dto.response.ResponseAlunoDTO;
+import com.generationschool.student.entity.Aluno;
+import com.generationschool.student.repository.AlunoRepository;
 import com.generationschool.student.service.AlunoService;
+
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -18,6 +24,9 @@ import java.util.List;
 public class AlunoController {
 
     private final AlunoService alunoService;
+    
+    @Autowired 
+    private AlunoRepository alunoRepository;
 
     @GetMapping(value = "/alunos/{id}")
     public ResponseEntity<ResponseAlunoDTO> findById(@PathVariable(name = "id") Long id) {
@@ -28,15 +37,11 @@ public class AlunoController {
     public ResponseEntity<List<ResponseAlunoDTO>> findAll() {
         return ResponseEntity.ok().body(alunoService.findAll());
     }
-
+    
     @PostMapping
-    public ResponseEntity<ResponseAlunoDTO> register(@Valid @RequestBody RequestAlunoDTO requestAlunoDTO, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<Aluno> register(@Valid @RequestBody Aluno aluno, UriComponentsBuilder uriBuilder) {
 
-        ResponseAlunoDTO responseAlunoDTO = alunoService.register(requestAlunoDTO);
-
-        URI uri = uriBuilder.path("/aluno/{id}").buildAndExpand(responseAlunoDTO.getId()).toUri();
-
-        return ResponseEntity.created(uri).body(responseAlunoDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(alunoRepository.save(aluno));
     }
 
     @PutMapping(value = "/alunos/{id}")
